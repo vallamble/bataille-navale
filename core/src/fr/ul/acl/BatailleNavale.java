@@ -1,27 +1,50 @@
 package fr.ul.acl;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import java.awt.SplashScreen;
 
-public class BatailleNavale extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-	
+import com.badlogic.gdx.*;
+import com.badlogic.gdx.graphics.*;
+import com.badlogic.gdx.graphics.g2d.*;
+
+import fr.ul.cad.controller.*;
+import fr.ul.cad.view.*;
+
+public class BatailleNavale extends Game {
+	private MenuScreen menuScreen;
+	private GameScreen gameScreen;
+	private EndScreen endScreen;
+	private MenuListener menuListener;
+	private GameListener gameListener;
+	private EndListener endListener;
+
 	@Override
-	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+	public void create() {
+		this.gameScreen = new GameScreen(this);
+		this.gameListener = new GameListener(gameScreen);
+		this.menuScreen = new MenuScreen(this);
+		this.menuListener = new MenuListener(menuScreen);
+		this.endScreen = new EndScreen(this);
+		this.endListener = new EndListener(endScreen);
+		this.setMenuScreen();
+		
 	}
 
-	@Override
-	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
+	// permet de passer a la fenetre de jeux
+	public void setGameScreen() {
+		Gdx.input.setInputProcessor(gameListener);
+		setScreen(gameScreen);
 	}
+
+	// permet de passer a la fenetre de menu
+	public void setMenuScreen() {
+		Gdx.input.setInputProcessor(menuListener);
+		setScreen(menuScreen);
+	}
+
+	// permet de passer a la fenetre de fin
+	public void setEndScreen() {
+		Gdx.input.setInputProcessor(endListener);
+		setScreen(endScreen);
+	}
+
 }
