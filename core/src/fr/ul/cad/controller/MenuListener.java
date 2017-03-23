@@ -1,20 +1,32 @@
 package fr.ul.cad.controller;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 
 import fr.ul.cad.view.MenuScreen;
 
 public class MenuListener implements InputProcessor {
+    private MenuScreen menu;
 
 	public MenuListener(MenuScreen menuScreen) {
-		// TODO Auto-generated constructor stub
+        menu = menuScreen;
 	}
 
 	@Override
 	public boolean keyDown(int keycode) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+        switch (keycode) {
+            case Input.Keys.UP:
+                menu.setChoice();
+                break;
+            case Input.Keys.DOWN:
+                menu.setChoice();
+                break;
+            case Input.Keys.ENTER:
+                menu.selectChoice();
+                break;
+        }
+        return false;
+    }
 
 	@Override
 	public boolean keyUp(int keycode) {

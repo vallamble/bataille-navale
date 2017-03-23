@@ -1,11 +1,6 @@
 package fr.ul.acl;
 
-import java.awt.SplashScreen;
-
 import com.badlogic.gdx.*;
-import com.badlogic.gdx.graphics.*;
-import com.badlogic.gdx.graphics.g2d.*;
-
 import fr.ul.cad.controller.*;
 import fr.ul.cad.view.*;
 
