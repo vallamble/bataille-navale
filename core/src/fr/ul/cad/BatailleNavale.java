@@ -1,4 +1,4 @@
-package fr.ul.acl;
+package fr.ul.cad;
 
 import com.badlogic.gdx.*;
 import fr.ul.cad.controller.*;

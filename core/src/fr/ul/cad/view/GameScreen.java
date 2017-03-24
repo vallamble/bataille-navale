@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
-import fr.ul.acl.BatailleNavale;
+import fr.ul.cad.BatailleNavale;
 
 public class GameScreen extends ScreenAdapter{
 	private BatailleNavale mygame;

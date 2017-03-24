@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
-import fr.ul.acl.BatailleNavale;
+import fr.ul.cad.BatailleNavale;
 
 
 public class MenuScreen extends ScreenAdapter {
