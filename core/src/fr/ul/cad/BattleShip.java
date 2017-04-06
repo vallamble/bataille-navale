@@ -2,9 +2,8 @@ package fr.ul.cad;
 
 import com.badlogic.gdx.*;
 import fr.ul.cad.controller.*;
-import fr.ul.cad.view.*;
 
-public class BatailleNavale extends Game {
+public class BattleShip extends Game {
 	private MenuScreen menuScreen;
 	private GameScreen gameScreen;
 	private EndScreen endScreen;

@@ -1,23 +1,22 @@
-package fr.ul.cad.view;
+package fr.ul.cad.controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
-import fr.ul.cad.BatailleNavale;
+import fr.ul.cad.BattleShip;
 
 public class GameScreen extends ScreenAdapter{
-	private BatailleNavale mygame;
+	private BattleShip mygame;
 	private SpriteBatch batch;
 	private OrthographicCamera camera;
 	private FitViewport viewport;
     private float ppux = 48f, ppuy = 48f;
 
-	public GameScreen(BatailleNavale batailleNavale) {
+	public GameScreen(BattleShip batailleNavale) {
 		this.mygame = mygame;
 		this.batch = new SpriteBatch();
 		this.camera = new OrthographicCamera();

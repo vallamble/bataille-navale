@@ -1,4 +1,4 @@
-package fr.ul.cad.view;
+package fr.ul.cad;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -9,11 +9,11 @@ public class TextureFactory {
     private TextureRegion menuBackground,menuBoutonLancer,menuBoutonLancerSelect,menuBoutonQuitter,menuBoutonQuitterSelect;
     
     private TextureFactory() {
-        menuBackground = new TextureRegion(new Texture(Gdx.files.internal("images/background.jpg")));
-        menuBoutonLancer = new TextureRegion(new Texture(Gdx.files.internal("images/lancer.png")));
-        menuBoutonLancerSelect = new TextureRegion(new Texture(Gdx.files.internal("images/lancerSelect.png")));
-        menuBoutonQuitter = new TextureRegion(new Texture(Gdx.files.internal("images/quitter.png")));
-        menuBoutonQuitterSelect = new TextureRegion(new Texture(Gdx.files.internal("images/quitterSelect.png")));
+        menuBackground = new TextureRegion(new Texture(Gdx.files.internal("core/assets/images/background.jpg")));
+        menuBoutonLancer = new TextureRegion(new Texture(Gdx.files.internal("core/assets/images/lancer.png")));
+        menuBoutonLancerSelect = new TextureRegion(new Texture(Gdx.files.internal("core/assets/images/lancerSelect.png")));
+        menuBoutonQuitter = new TextureRegion(new Texture(Gdx.files.internal("core/assets/images/quitter.png")));
+        menuBoutonQuitterSelect = new TextureRegion(new Texture(Gdx.files.internal("core/assets/images/quitterSelect.png")));
     }
 
     public static TextureFactory getInstance() {

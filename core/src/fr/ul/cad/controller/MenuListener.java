@@ -3,8 +3,6 @@ package fr.ul.cad.controller;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 
-import fr.ul.cad.view.MenuScreen;
-
 public class MenuListener implements InputProcessor {
     private MenuScreen menu;
 

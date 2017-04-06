@@ -2,8 +2,6 @@ package fr.ul.cad.controller;
 
 import com.badlogic.gdx.InputProcessor;
 
-import fr.ul.cad.view.GameScreen;
-
 public class GameListener implements InputProcessor {
 
 	public GameListener(GameScreen gameScreen) {

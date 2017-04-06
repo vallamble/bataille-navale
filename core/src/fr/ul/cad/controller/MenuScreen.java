@@ -1,4 +1,4 @@
-package fr.ul.cad.view;
+package fr.ul.cad.controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
@@ -7,11 +7,12 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
-import fr.ul.cad.BatailleNavale;
+import fr.ul.cad.BattleShip;
+import fr.ul.cad.TextureFactory;
 
 
 public class MenuScreen extends ScreenAdapter {
-	private BatailleNavale mygame;
+	private BattleShip mygame;
 	private SpriteBatch batch;
 	private OrthographicCamera camera;
 	private FitViewport viewport;
@@ -23,7 +24,7 @@ public class MenuScreen extends ScreenAdapter {
 
 
 	// creation de la premiere page
-	public MenuScreen(BatailleNavale mygame) {
+	public MenuScreen(BattleShip mygame) {
 		this.mygame = mygame;
 		this.batch = new SpriteBatch();
 		this.camera = new OrthographicCamera();
@@ -38,7 +39,7 @@ public class MenuScreen extends ScreenAdapter {
 		this.camera.update();
 		this.batch.setProjectionMatrix(camera.combined);
 		this.batch.begin();
-			batch.draw(TextureFactory.getInstance().getMenuBackground(),0,0);	
+			batch.draw(TextureFactory.getInstance().getMenuBackground(),0,0);
 	        drawMenu();
 		this.batch.end();
 	}

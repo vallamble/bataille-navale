@@ -2,8 +2,6 @@ package fr.ul.cad.controller;
 
 import com.badlogic.gdx.InputProcessor;
 
-import fr.ul.cad.view.EndScreen;
-
 public class EndListener implements InputProcessor {
 
 	public EndListener(EndScreen endScreen) {
