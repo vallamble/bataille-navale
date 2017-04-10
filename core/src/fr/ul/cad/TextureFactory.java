@@ -1,11 +1,10 @@
-package fr.ul.cad.view;
+package fr.ul.cad;
 
 
 public class TextureFactory {
     private static TextureFactory instance = new TextureFactory();
     
     private TextureFactory() {
-      
     }
 
     public static TextureFactory getInstance() {

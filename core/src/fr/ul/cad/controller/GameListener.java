@@ -2,11 +2,11 @@ package fr.ul.cad.controller;
 
 import com.badlogic.gdx.InputProcessor;
 
-import fr.ul.cad.view.GameScreen;
+import fr.ul.cad.view.WorldRenderer;
 
 public class GameListener implements InputProcessor {
 
-	public GameListener(GameScreen gameScreen) {
+	public GameListener(WorldRenderer gameScreen) {
 		// TODO Auto-generated constructor stub
 	}
 

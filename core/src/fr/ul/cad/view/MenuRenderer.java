@@ -7,17 +7,15 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import fr.ul.cad.BattleShip;
 
-import fr.ul.cad.BatailleNavale;
-import fr.ul.cad.controller.MenuListener;
-
-public class MenuScreen extends ScreenAdapter {
-	private BatailleNavale mygame;
+public class MenuRenderer extends ScreenAdapter {
+	private BattleShip mygame;
 	private Stage stage;
 	private Skin skin;
 
 	// creation de la premiere page
-	public MenuScreen(BatailleNavale mygame) {
+	public MenuRenderer(BattleShip mygame) {
 		this.mygame = mygame;
 		this.stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
@@ -39,6 +37,14 @@ public class MenuScreen extends ScreenAdapter {
 		table.setSize(680, 480);
 
 		TextButton startGame = new TextButton("Start Game", skin);
+		startGame.addListener(new ClickListener(){
+			private BattleShip battleship = mygame;
+
+			@Override
+	           public void clicked(InputEvent event, float x, float y) {
+	        	   this.battleship.setChoiceScreen();
+	           }
+	      });
 		table.add(startGame);
 		table.row();
 

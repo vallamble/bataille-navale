@@ -1,14 +1,13 @@
 package fr.ul.cad.controller;
 
 import com.badlogic.gdx.InputProcessor;
-
-import fr.ul.cad.BatailleNavale;
+import fr.ul.cad.BattleShip;
 
 public class MenuListener implements InputProcessor  {
 
-	private BatailleNavale game;
+	private BattleShip game;
 
-	public MenuListener(BatailleNavale mygame) {
+	public MenuListener(BattleShip mygame) {
 		this.game = mygame;
 	}
 
