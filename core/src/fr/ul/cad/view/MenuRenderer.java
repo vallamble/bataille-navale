@@ -62,8 +62,6 @@ public class MenuRenderer extends ScreenAdapter {
 	    table.add(exit);
 		table.row();
 		stage.addActor(table);
-		
-
 	}
 
 	// liberation

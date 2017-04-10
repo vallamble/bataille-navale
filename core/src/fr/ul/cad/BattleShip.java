@@ -12,31 +12,31 @@ public class BattleShip extends Game {
 
 	@Override
 	public void create() {
-		this.gameScreen = new WorldRenderer(this);
-		this.menuScreen = new MenuRenderer(this);
-		this.endScreen = new EndRenderer(this);
-		this.choicescreen = new ChoiceRenderer(this);
 		this.setMenuScreen();
 
 	}
 
 	// permet de passer a la fenetre de jeux
 	public void setGameScreen() {
+		this.gameScreen = new WorldRenderer(this);
 		setScreen(gameScreen);
 	}
 
 	// permet de passer a la fenetre du choix des strategies
 	public void setChoiceScreen() {
+		this.choicescreen = new ChoiceRenderer(this);
 		setScreen(choicescreen);
 	}
 
 	// permet de passer a la fenetre de menu
 	public void setMenuScreen() {
+		this.menuScreen = new MenuRenderer(this);
 		setScreen(menuScreen);
 	}
 
 	// permet de passer a la fenetre de fin
 	public void setEndScreen() {
+		this.endScreen = new EndRenderer(this);
 		setScreen(endScreen);
 	}
 
