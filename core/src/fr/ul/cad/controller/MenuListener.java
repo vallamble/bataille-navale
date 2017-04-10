@@ -1,32 +1,22 @@
 package fr.ul.cad.controller;
 
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 
-import fr.ul.cad.view.MenuScreen;
+import fr.ul.cad.BatailleNavale;
 
-public class MenuListener implements InputProcessor {
-    private MenuScreen menu;
+public class MenuListener implements InputProcessor  {
 
-	public MenuListener(MenuScreen menuScreen) {
-        menu = menuScreen;
+	private BatailleNavale game;
+
+	public MenuListener(BatailleNavale mygame) {
+		this.game = mygame;
 	}
 
 	@Override
 	public boolean keyDown(int keycode) {
-        switch (keycode) {
-            case Input.Keys.UP:
-                menu.setChoice();
-                break;
-            case Input.Keys.DOWN:
-                menu.setChoice();
-                break;
-            case Input.Keys.ENTER:
-                menu.selectChoice();
-                break;
-        }
-        return false;
-    }
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 	@Override
 	public boolean keyUp(int keycode) {
@@ -48,7 +38,7 @@ public class MenuListener implements InputProcessor {
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
+		System.out.println("oui" + button);
 		return false;
 	}
 
@@ -69,5 +59,5 @@ public class MenuListener implements InputProcessor {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
 }

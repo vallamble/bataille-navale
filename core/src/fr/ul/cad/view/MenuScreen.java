@@ -3,79 +3,66 @@ package fr.ul.cad.view;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import fr.ul.cad.BatailleNavale;
-
+import fr.ul.cad.controller.MenuListener;
 
 public class MenuScreen extends ScreenAdapter {
 	private BatailleNavale mygame;
-	private SpriteBatch batch;
-	private OrthographicCamera camera;
-	private FitViewport viewport;
-	private MenuChoice choice = MenuChoice.LANCER_PARTIE;
-    public enum MenuChoice { LANCER_PARTIE, QUITTER }
-    private float ppux = 48f, ppuy = 48f;
-
-   
-
+	private Stage stage;
+	private Skin skin;
 
 	// creation de la premiere page
 	public MenuScreen(BatailleNavale mygame) {
 		this.mygame = mygame;
-		this.batch = new SpriteBatch();
-		this.camera = new OrthographicCamera();
-		this.viewport = new FitViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(), camera);
-		this.camera.position.set(Gdx.graphics.getWidth() / 2.0f, Gdx.graphics.getHeight() / 2.0f, 0);
-		this.camera.update();
+		this.stage = new Stage();
+		Gdx.input.setInputProcessor(stage);
+		skin = new Skin(Gdx.files.internal("skin/glassy-ui.json"));
+		createMenu();
 	}
 
 	public void render(float delta) {
-		Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+		Gdx.gl.glClearColor(1, 1, 1, 1);
+		Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(),
+				Gdx.graphics.getHeight());
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		this.camera.update();
-		this.batch.setProjectionMatrix(camera.combined);
-		this.batch.begin();
-			batch.draw(TextureFactory.getInstance().getMenuBackground(),0,0);	
-	        drawMenu();
-		this.batch.end();
+		stage.act();
+		stage.draw();
 	}
 
-	 private void drawMenu() {
-	        if(choice == MenuScreen.MenuChoice.QUITTER)
-	        	this.batch.draw(TextureFactory.getInstance().getMenuBoutonQuitterSelect(), 2*ppux,3*ppuy,10*ppux,ppuy);
-	        else
-	        	this.batch.draw(TextureFactory.getInstance().getMenuBoutonQuitter(), 2*ppux,3*ppuy,10*ppux,ppuy);
-	       if(choice == MenuScreen.MenuChoice.LANCER_PARTIE)
-	    	   this.batch.draw(TextureFactory.getInstance().getMenuBoutonLancerSelect(), 2*ppux,5*ppuy,10*ppux,ppuy);
-	        else
-	        	this.batch.draw(TextureFactory.getInstance().getMenuBoutonLancer(),  2*ppux,5*ppuy,10*ppux,ppuy);
-	    }
-	 
-	// maj de la camera
-	public void resize(int width, int height) {
-		this.viewport.update(width, height);
+	private void createMenu() {
+		Table table = new Table();
+		table.setSize(680, 480);
+
+		TextButton startGame = new TextButton("Start Game", skin);
+		table.add(startGame);
+		table.row();
+
+		TextButton load = new TextButton("Load", skin);
+		table.add(load).padTop(15).padBottom(15);
+		table.row();
+
+		TextButton exit = new TextButton("Exit", skin);
+		exit.addListener(new ClickListener(){
+	           @Override
+	           public void clicked(InputEvent event, float x, float y) {
+	               Gdx.app.exit();
+	           }
+	      });
+	    table.add(exit);
+		table.row();
+		stage.addActor(table);
+		
+
 	}
 
 	// liberation
 	public void dispose() {
-		batch.dispose();
+		stage.dispose();
 	}
 
-	public void setChoice() {
-		 if(choice == MenuChoice.LANCER_PARTIE) {
-                choice = MenuChoice.QUITTER;
-        }else{
-                choice = MenuChoice.LANCER_PARTIE;
-        }
-	}
-	
-    public void selectChoice() {
-        if(choice == MenuChoice.LANCER_PARTIE)
-			this.mygame.setGameScreen();
-        if(choice == MenuChoice.QUITTER)
-            Gdx.app.exit();
-    }
 }
