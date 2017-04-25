@@ -22,16 +22,6 @@ public class ConfigScreen extends JPanel {
 
 	public ConfigScreen(BattleShip battleShip) {
 		this.bs = battleShip;
-		this.liste1 = new Object[]{"Basique","Bateau"};
-		this.tirJoueur = new JComboBox(liste1);
-		this.liste2 = new Object[]{"Alea","Diagonale","Complex"};// a recup auto plus tard
-		this.tirOrdinateur = new JComboBox(liste2);
-		this.liste3 = new Object[]{"Moderne","Pirate","Romaine"}; // pareille
-		this.epoque = new JComboBox(liste3);
-		this.tirJ = new Label("Strategie tir Joueur ");
-		this.tirIa = new Label("Strategie tir IA");
-		this.eq = new Label("Epoque");
-		this.play = new JButton("Play");
 		drawConfig();
 		controller();
 	}
@@ -44,6 +34,16 @@ public class ConfigScreen extends JPanel {
 
 	private void drawConfig() {
 		this.setBackground(Color.GREEN);
+		this.liste1 = new Object[]{"Basique","Bateau"};
+		this.tirJoueur = new JComboBox(liste1);
+		this.liste2 = new Object[]{"Alea","Diagonale","Complex"};// a recup auto plus tard
+		this.tirOrdinateur = new JComboBox(liste2);
+		this.liste3 = new Object[]{"Moderne","Pirate","Romaine"}; // pareille
+		this.epoque = new JComboBox(liste3);
+		this.tirJ = new Label("Strategie tir Joueur ");
+		this.tirIa = new Label("Strategie tir IA");
+		this.eq = new Label("Epoque");
+		this.play = new JButton("Play");
 		Box panneauBouton = Box.createVerticalBox();
 		panneauBouton.add(tirJ);
 		panneauBouton.add(tirJoueur);

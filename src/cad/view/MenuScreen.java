@@ -17,9 +17,6 @@ public class MenuScreen extends JPanel {
 
 	public MenuScreen(BattleShip battleShip) {
 		this.bs = battleShip;
-		this.play = new JButton("Play");
-		this.load = new JButton("Load");
-		this.exit = new JButton("Exit");
 		drawMenu();
 		controller();
 	}
@@ -36,6 +33,9 @@ public class MenuScreen extends JPanel {
 	}
 
 	private void drawMenu() {
+		this.play = new JButton("Play");
+		this.load = new JButton("Load");
+		this.exit = new JButton("Exit");
 		this.setBackground(Color.BLUE);
 		Box panneauBouton = Box.createVerticalBox();
 		panneauBouton.add(play);

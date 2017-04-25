@@ -19,7 +19,7 @@ public class BattleShip extends JFrame {
 		this.menu = new MenuScreen(this);
 		frame.add(menu, BorderLayout.CENTER);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(500, 300);
+		frame.setSize(1200, 800);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
