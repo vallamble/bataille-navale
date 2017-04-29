@@ -1,8 +1,10 @@
 package cad;
 
 import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
 
+import cad.model.Model;
 import cad.view.ConfigScreen;
 import cad.view.GameScreen;
 import cad.view.MenuScreen;
@@ -13,8 +15,10 @@ public class BattleShip extends JFrame {
 	private GameScreen game;
 	private ConfigScreen config;
 	private JFrame frame;
+	private Model model;
 
 	public BattleShip() {
+		this.model = new Model();
 		frame = new JFrame("Bataille navale");
 		this.menu = new MenuScreen(this);
 		frame.add(menu, BorderLayout.CENTER);
@@ -25,7 +29,7 @@ public class BattleShip extends JFrame {
 	}
 	
 	public void setGameScreen() {
-		this.game = new GameScreen(this);
+		this.game = new GameScreen(model);
 		frame.add(game, BorderLayout.CENTER);
 	}
 	

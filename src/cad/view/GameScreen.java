@@ -1,20 +1,20 @@
 package cad.view;
 
 import javax.swing.JPanel;
-import cad.BattleShip;
-import cad.model.Board;
+
+import cad.model.Model;
 
 public class GameScreen extends JPanel{
-	private Board board_player,board_ia;
+	
+	protected Model model;
+	private ShipPlaceView board_player,board_ia;
 
-
-
-	public GameScreen(BattleShip battleShip) {
-
-		this.board_player = new Board();
-		this.board_ia = new Board();
+	public GameScreen(Model model) {
+		this.model = model;
+		this.board_player = new ShipPlaceView(model);
+		//this.board_ia = new Boardold();
 		this.add(board_player);
-		this.add(board_ia);
+		//this.add(board_ia);
 
 	}
 
