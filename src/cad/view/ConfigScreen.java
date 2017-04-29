@@ -12,20 +12,19 @@ import cad.BattleShip;
 import cad.controller.ConfigListener;
 
 public class ConfigScreen extends JPanel {
+
+	private static final long serialVersionUID = 1L;
 	private Object[] liste1,liste2,liste3;
 	private JComboBox tirJoueur,tirOrdinateur,epoque;
 	private Label tirJ,tirIa,eq;
 	private JButton play;
 	private BattleShip bs;
 
-
-
 	public ConfigScreen(BattleShip battleShip) {
 		this.bs = battleShip;
 		drawConfig();
 		controller();
 	}
-
 
 	private void controller() {
 		play.addActionListener(new ConfigListener(bs,tirJoueur.getSelectedItem(),tirOrdinateur.getSelectedItem(),epoque.getSelectedItem(),this));

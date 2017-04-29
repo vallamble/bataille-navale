@@ -2,46 +2,54 @@ package cad.model;
 
 public class Cell{
 	
-	private int abs, ord, width, height;
+	private int x, y;
+	private boolean state, isTouch;
+	private Ship ship;
 	
-	public Cell(int abs, int ord, int width, int height){
-		this.abs = abs;
-		this.ord = ord;
-		this.width = width;
-		this.height = height;
+	public Cell(int x, int y, Ship ship){
+		this.x = x;
+		this.y = y;
+		this.ship = ship;
 	}
 
-	public int getAbs() {
-		return abs;
+	public int getX() {
+		return x;
 	}
 
-	public void setAbs(int abs) {
-		this.abs = abs;
+	public void setX(int x) {
+		this.x = x;
 	}
 
-	public int getOrd() {
-		return ord;
+	public int getY() {
+		return y;
 	}
 
-	public void setOrd(int ord) {
-		this.ord = ord;
+	public void setY(int y) {
+		this.y = y;
 	}
 
-	public int getWidth() {
-		return width;
+	public boolean isState() {
+		return state;
 	}
 
-	public void setWidth(int width) {
-		this.width = width;
+	public void setState(boolean state) {
+		this.state = state;
 	}
 
-	public int getHeight() {
-		return height;
+	public boolean isTouch() {
+		return isTouch;
 	}
 
-	public void setHeight(int height) {
-		this.height = height;
+	public void setTouch(boolean isTouch) {
+		this.isTouch = isTouch;
 	}
-	
+
+	public Ship getShip() {
+		return ship;
+	}
+
+	public void setShip(Ship ship) {
+		this.ship = ship;
+	}
 
 }

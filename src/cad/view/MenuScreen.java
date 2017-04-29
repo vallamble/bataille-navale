@@ -1,7 +1,6 @@
 package cad.view;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,6 +11,8 @@ import javax.swing.JPanel;
 import cad.BattleShip;
 
 public class MenuScreen extends JPanel {
+	
+	private static final long serialVersionUID = 1L;
 	private BattleShip bs;
 	private JButton play,load,exit;
 

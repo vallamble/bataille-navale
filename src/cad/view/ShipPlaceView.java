@@ -18,13 +18,16 @@ import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
 import cad.model.Model;
+import cad.model.Ship;
 
 public class ShipPlaceView extends JPanel implements Observer{
 	
+	private static final long serialVersionUID = 1L;
 	private Model model;
 	private JButton[][] board;
 	private JButton[] ships;
 	private JPanel panelBoard, panelShips;
+	//private boolean vertical = false;
 
 	public ShipPlaceView(Model modele){
 		super();
@@ -35,14 +38,6 @@ public class ShipPlaceView extends JPanel implements Observer{
 		
 		this.ships = new JButton[10];
 		this.drawShips(this.panelShips, this.ships, 50, 50);
-		
-		/*panelShips.addMouseMotionListener(new MouseAdapter() {
-	        public void mouseDragged(MouseEvent e) {
-	        	if((e.getX() >= l4.getLocation().x && e.getX() <= l4.getLocation().x+l4.getWidth()) &&
-	        	   (e.getY() >= l4.getLocation().y && e.getY() <= l4.getLocation().y+l4.getHeight()))
-	        	jLabel[0].setBounds(e.getX()-80,e.getY()-20, jLabel[0].getWidth(), jLabel[0].getHeight());
-	        }
-	    });*/
 
 		this.model.addObserver(this);
 	}
@@ -54,6 +49,11 @@ public class ShipPlaceView extends JPanel implements Observer{
 		this.add(panel);
 		return panel;
 	}
+	
+	
+	/***********************************************************/
+	/************************** Board **************************/
+	/***********************************************************/
 	
 	// build board game 
 	private void drawBoard(JPanel jp, JButton[][] board, int x, int y){
@@ -92,6 +92,7 @@ public class ShipPlaceView extends JPanel implements Observer{
 			public void mouseEntered(MouseEvent e) {
 				JButton source = (JButton)e.getSource();
 				source.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+				viewShipBoard();
 			}
 			public void mouseExited(MouseEvent e) {
 				JButton source = (JButton)e.getSource();
@@ -102,27 +103,29 @@ public class ShipPlaceView extends JPanel implements Observer{
 		});
 	}
 	
+	private void viewShipBoard(){
+	}
+	
+	
+	/***********************************************************/
+	/************************** Ships **************************/
+	/***********************************************************/
+	
 	private void drawShips(JPanel jp, JButton[] label, int x, int y){
 		jp = this.drawJPanel(x, y, 450, 800);
 		jp.setLayout(new GridLayout(4,4,20,50));
 		for(int i=0; i<10; i++)
 			label[i] = new JButton();
-		
 		// initial ship position
-		this.iconShip(jp, "images/s1.png", 200, label[0], 633, 132);
-		this.iconShip(jp, "images/s1.png", 150, label[1], 150, 50);
-		this.iconShip(jp, "images/s1.png", 150, label[2], 150, 250);
-		this.iconShip(jp, "images/s1.png", 100, label[3], 250, 50);
-		this.iconShip(jp, "images/s1.png", 100, label[4], 250, 200);
-		this.iconShip(jp, "images/s1.png", 100, label[5], 250, 350);
-		this.iconShip(jp, "images/s1.png", 50, label[6], 350, 50);
-		this.iconShip(jp, "images/s1.png", 50, label[7], 350, 150);
-		this.iconShip(jp, "images/s1.png", 50, label[8], 350, 250);
-		this.iconShip(jp, "images/s1.png", 50, label[9], 350, 350);
+		int key = model.getKeyage(), i=0;
+		for(Ship ship: this.model.getAges().get(key).getShips()){
+			this.iconShip(jp, ship, ship.getLengthShip()*50, label[i]);
+			i++;
+		}
 	}
 	
-	private void iconShip(JPanel jp, String irl, int width, JButton jb, int x, int y){
-		ImageIcon icon = new ImageIcon(new ImageIcon(irl).getImage().getScaledInstance(width, 40, Image.SCALE_DEFAULT));
+	private void iconShip(JPanel jp, final Ship ship, int width, JButton jb){
+		ImageIcon icon = new ImageIcon(new ImageIcon(ship.getPathImage()).getImage().getScaledInstance(width, 40, Image.SCALE_DEFAULT));
 		jb.setIcon(icon);
 		jb.setBorderPainted(false);
 		jb.setFocusPainted(false);
@@ -131,7 +134,7 @@ public class ShipPlaceView extends JPanel implements Observer{
 		jb.setPreferredSize(new Dimension(width,40));
 		jb.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				model.setChooseAge(ship);
 			}
 		});
 		jp.add(jb); 

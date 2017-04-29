@@ -11,6 +11,7 @@ import cad.view.MenuScreen;
 
 public class BattleShip extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private MenuScreen menu;
 	private GameScreen game;
 	private ConfigScreen config;
