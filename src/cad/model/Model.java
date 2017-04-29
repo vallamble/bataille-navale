@@ -1,7 +1,6 @@
 package cad.model;
 
 import java.awt.Point;
-import java.util.HashMap;
 import java.util.Observable;
 
 public class Model extends Observable implements Runnable {
@@ -9,43 +8,29 @@ public class Model extends Observable implements Runnable {
 	public static int WIDTH = 10;
 	public static int HEIGHT = 10;
 	
-	private HashMap<Integer, Age> ages;
-	private int keyage = 0;
 	private Cell[][] boardPlayer, boardAi;
 	private Point selectShipPLace = null;
 	private Ship chooseShip;
-	
+	private Age age;
 	
 	public Model(){
-		ages = new HashMap<Integer, Age>();
-		String[] shipInfo = new String[8];
-		for(int i=0; i<8;i=i+2){
-			shipInfo[i] = "s"+i;
-			shipInfo[i+1] = "assert/s1.png";
-		}
-		this.buildAge("Moderne", shipInfo);
-		
+		age = new Age("Moderne");
+		age.addShip(new Ship("porte-avion","assets/s1.png",5,5));
+		age.addShip(new Ship("croiseur","assets/s1.png",4,4));
+		age.addShip(new Ship("contre-torpilleur","assets/s1.png",3,3));
+		age.addShip(new Ship("sous-marins","assets/s1.png",3,3));
+		age.addShip(new Ship("torpilleur","assets/s1.png",2,2));
+
 		this.boardPlayer = new Cell[WIDTH+1][HEIGHT+1];
 		this.buildBoards(this.boardPlayer);
 		this.boardAi = new Cell[WIDTH+1][HEIGHT+1];
 		this.buildBoards(this.boardAi);
 		
 		this.exemplePlace(this.boardPlayer);
-		this.print();
-	}
-	
-	private void buildAge(String nameAge, String[] shipInfo){ // ship = name - irl
-		this.keyage++;
-		Age age = new Age("nameAge");
-		age.addShip(new Ship(shipInfo[0],shipInfo[1],4,4),1);
-		age.addShip(new Ship(shipInfo[2],shipInfo[3],3,3),2);
-		age.addShip(new Ship(shipInfo[4],shipInfo[5],2,2),3);
-		age.addShip(new Ship(shipInfo[6],shipInfo[7],1,1),4);
-		this.ages.put(this.keyage, age);
+		//this.print();
 	}
 	
 	private void buildBoards(Cell[][] board){
-		
 		for(int i=1; i<WIDTH+1; i++){
 			for(int j=1; j<HEIGHT+1; j++){
 				board[i][j] = new Cell(i, j, null);
@@ -54,11 +39,11 @@ public class Model extends Observable implements Runnable {
 	}
 	
 	private void exemplePlace(Cell[][] board){
-		int position[][] = {{2,2}, {4,2}, {4,6}, {6,2}, {6,5}, {6,8}, {8,2}, {8,4}, {8,6}, {8,8}};
+		int position[][] = {{2,2}, {4,4}, {6,6}, {8,1}, {9,6}};
 		int i = 0;
-		for(Ship ship : this.ages.get(this.keyage).getShips()){
+		for(Ship ship : this.age.getShips()){
 			for(int j=0; j<ship.getLengthShip(); j++){
-				this.setShipCell(board, position[i][0], position[i][1]+j, this.ages.get(this.keyage).getShips().get(i));
+				this.setShipCell(board, position[i][0], position[i][1]+j, this.age.getShips().get(i));
 			}
 			i++;
 		}
@@ -83,22 +68,15 @@ public class Model extends Observable implements Runnable {
 	/********************* GETTER / SETTER *********************/
 	/***********************************************************/
 	
-	public HashMap<Integer, Age> getAges() {
-		return ages;
+	public Age getAge() {
+		return age;
 	}
 
-	public void setAges(HashMap<Integer, Age> ages) {
-		this.ages = ages;
+	public void setAge(Age age) {
+		this.age = age;
 	}
+
 	
-	public int getKeyage() {
-		return keyage;
-	}
-
-	public void setKeyage(int keyage) {
-		this.keyage = keyage;
-	}
-
 	public Point getSelectShipPLace() {
 		return selectShipPLace;
 	}

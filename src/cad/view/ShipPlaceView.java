@@ -117,8 +117,8 @@ public class ShipPlaceView extends JPanel implements Observer{
 		for(int i=0; i<10; i++)
 			label[i] = new JButton();
 		// initial ship position
-		int key = model.getKeyage(), i=0;
-		for(Ship ship: this.model.getAges().get(key).getShips()){
+		int i=0;
+		for(Ship ship: this.model.getAge().getShips()){
 			this.iconShip(jp, ship, ship.getLengthShip()*50, label[i]);
 			i++;
 		}

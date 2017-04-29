@@ -38,8 +38,7 @@ public class Age {
 	/************************* FONCTION ************************/
 	/***********************************************************/
 	
-	public void addShip(Ship ship, int nb){
-		for(int i=0; i<nb; i++)
+	public void addShip(Ship ship){
 			this.ships.add(ship);
 	}
 	
